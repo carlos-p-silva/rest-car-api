@@ -1,7 +1,6 @@
 package com.caps.rentcarapi.controller;
 
 import com.caps.rentcarapi.dto.CustomerDTO;
-import com.caps.rentcarapi.entities.Customer;
 import com.caps.rentcarapi.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
