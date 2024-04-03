@@ -17,8 +17,7 @@ public class CarDTO implements Serializable {
     private String color;
     private Integer year;
     private BigDecimal valuePerDay;
-
-    public CarDTO() {}
+    private boolean avaible;
 
     public Long getId() {
         return id;
@@ -74,6 +73,14 @@ public class CarDTO implements Serializable {
 
     public void setValuePerDay(BigDecimal valuePerDay) {
         this.valuePerDay = valuePerDay;
+    }
+
+    public boolean isAvaible() {
+        return avaible;
+    }
+
+    public void setAvaible(boolean avaible) {
+        this.avaible = avaible;
     }
 
     @Override

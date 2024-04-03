@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -22,6 +24,9 @@ public class Customer implements Serializable {
     @Column(length = 100, unique = true)
     private String email;
     private String phone;
+
+    @OneToMany(mappedBy = "customer")
+    private final Set<Booking> booking = new HashSet<>();
 
     public Customer() {}
 
@@ -72,6 +77,10 @@ public class Customer implements Serializable {
         this.phone = phone;
     }
 
+    public Set<Booking> getBooking() {
+        return booking;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,4 +104,6 @@ public class Customer implements Serializable {
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         return result;
     }
+
+
 }

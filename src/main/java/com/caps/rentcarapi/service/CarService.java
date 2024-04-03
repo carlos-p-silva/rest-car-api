@@ -44,6 +44,7 @@ public class CarService {
         car.setColor(carDTO.getColor());
         car.setYear(carDTO.getYear());
         car.setValuePerDay(carDTO.getValuePerDay());
+        car.setAvaible(carDTO.isAvaible());
         return ModelMapperConfig.parseObject(car, CarDTO.class);
     }
 

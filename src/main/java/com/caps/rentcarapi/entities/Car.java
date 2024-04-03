@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "car")
@@ -21,16 +23,21 @@ public class Car implements Serializable {
     private String color;
     private Integer year;
     private BigDecimal valuePerDay;
+    private boolean avaible;
+
+    @OneToMany(mappedBy = "car")
+    private final Set<Booking> booking = new HashSet<>();
 
     public Car() {}
 
-    public Car(String brand, String model, String plate, String color, Integer year, BigDecimal valuePerDay) {
+    public Car(String brand, String model, String plate, String color, Integer year, BigDecimal valuePerDay, boolean avaible) {
         this.brand = brand;
         this.model = model;
         this.plate = plate;
         this.color = color;
         this.year = year;
         this.valuePerDay = valuePerDay;
+        this.avaible = avaible;
     }
 
     public Long getId() {
@@ -87,6 +94,18 @@ public class Car implements Serializable {
 
     public void setValuePerDay(BigDecimal valuePerDay) {
         this.valuePerDay = valuePerDay;
+    }
+
+    public boolean isAvaible() {
+        return avaible;
+    }
+
+    public void setAvaible(boolean avaible) {
+        this.avaible = avaible;
+    }
+
+    public Set<Booking> getBooking() {
+        return booking;
     }
 
     @Override
